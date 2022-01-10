@@ -1,0 +1,36 @@
+import './App.css'
+import './tailwind.css'
+import { createTheme, ThemeProvider } from '@mui/material'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+import Login from './components/Auth/Login'
+import Register from "./components/Auth/Register";
+import AdminDashboard from './components/AdminLayout';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#f50057'
+    },
+    secondary: {
+      main: '#0071FF'
+    }
+  }
+})
+
+function App() {
+  return (
+    // <div></div>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login}></Route>
+          <Route path="/register" component={Register}></Route>
+          <Route path="/adminDashboard" component={AdminDashboard}></Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
+  )
+}
+
+export default App;
