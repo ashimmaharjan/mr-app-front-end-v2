@@ -8,6 +8,8 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { useState } from "react";
 import InputField from "../InputFields/InputField";
@@ -21,9 +23,10 @@ import {
   AccountCircleOutlined,
 } from "@mui/icons-material";
 import { register, isAuthenticated } from "../API/api";
+import AlertMessage from "../Alerts/Alert";
 
 
-const UserDialog = ({ open, handleClose }) => {
+const UserDialog = ({ open, handleClose, handleSubmitClose }) => {
 
   const {
     user,
@@ -58,6 +61,8 @@ const UserDialog = ({ open, handleClose }) => {
     success,
   } = values;
 
+  const [successStatus, setSuccessStatus] = useState(false);
+
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
@@ -81,8 +86,11 @@ const UserDialog = ({ open, handleClose }) => {
           error: "",
           success: true,
         });
+        handleSubmitClose();
+        setSuccessStatus(true);
       }
     });
+    setSuccessStatus(false);
   };
 
   const AddUserForm = () => {
@@ -174,6 +182,7 @@ const UserDialog = ({ open, handleClose }) => {
           </DialogActions>
         </form>
 
+
       </Dialog>
     );
   };
@@ -187,35 +196,32 @@ const UserDialog = ({ open, handleClose }) => {
     </div>
   );
 
-  const showSuccess = () => (
-    <div
-      className="flex alert alert-info justify-center items-center bg-green-500 text-white py-1"
-      style={{ display: success ? "" : "none" }}
-    >
-      New User is Created!!
-    </div>
-  );
+  // const showSuccess = () => (
+  //   <div
+  //     style={{ display: success ? "" : "none" }}
+  //   >
+  //     <Snackbar style={{ display: success ? "" : "none" }} autoHideDuration={2000}
+  //       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+  //       <Alert severity="success" sx={{ width: '100%' }}>
+  //         User Added Successfully
+  //       </Alert>
+  //     </Snackbar>
+  //   </div>
 
-  //   const redirectUser = () => {
-  //     if (isAuthenticated()) {
-  //       return (
-  //         <>
-  //           <div
-  //             className='flex alert alert-info justify-center items-center bg-green-500 text-white py-1'
-  //             style={{ display: success ? "" : "none" }}
-  //           >
-  //             Your account is already logged in!
-  //           </div>
-  //           <Redirect to='/admin/dashboard' />; ;
-  //         </>
-  //       );
-  //     }
-  //   };
+  // );
 
   return (
     <>
-      {showError()}
-      {showSuccess()}
+      {
+        successStatus ? <AlertMessage message={"User Added Successfully"} /> : ''
+      }
+
+      {
+        error ? <AlertMessage message={error} /> : ''
+      }
+
+      {/* {showError()} */}
+      {/* {showSuccess()} */}
       {AddUserForm()}
     </>
   );

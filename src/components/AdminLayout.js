@@ -19,7 +19,7 @@ import MyAppBar from "./AppBar";
 import NavigationDrawer from "./NavigationDrawer";
 import Dashboard from "./Dashboard";
 
-const AdminLayout = ({history}) => {
+const AdminLayout = ({ history }) => {
     return (
         <section>
             <Router>
@@ -29,8 +29,8 @@ const AdminLayout = ({history}) => {
                         <NavigationDrawer />
                     </div>
                     <div className="content rounded-tl-xl p-4">
+                        <Route path="/adminDashboard" component={Dashboard}></Route>
                         <Switch>
-                            <Route path="/adminDashboard" component={Dashboard}></Route>
                             <Route path="/users" component={Users}></Route>
                             <Route path="/rolesAndPermissions" component={RolesAndPermissions}></Route>
                             <Route path="/stokiest" component={Stokiest}></Route>

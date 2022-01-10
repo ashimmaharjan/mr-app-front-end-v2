@@ -29,7 +29,7 @@ const RolesAndPermissions = () => {
         <section>
             <div style={{ height: '400px', width: '100%' }}>
                 <div className="flex justify-between items-center">
-                    <Typography variant='h4'>
+                    <Typography variant='h5' className='uppercase'>
                         <AdminPanelSettings fontSize='large' className='mb-1' /> Roles & Permissions
                     </Typography>
 

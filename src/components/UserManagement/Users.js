@@ -41,6 +41,10 @@ const Users = () => {
         setOpen(true);
     };
 
+    const handleSubmitClose = () => {
+        setOpen(false);
+    };
+
     const handleClose = () => {
         setOpen(false);
     };
@@ -50,16 +54,16 @@ const Users = () => {
     }, [])
 
     return (
-        <div style={{ height: '400px', width: '100%' }}>
+        <div style={{ height: '90%', width: '100%' }}>
             <div className="flex justify-between items-center">
-                <Typography variant='h4'>
-                    <SupervisedUserCircle fontSize='large' className='mb-1' /> Users
+                <Typography className='uppercase' variant='h5'>
+                    <SupervisedUserCircle fontSize='large'></SupervisedUserCircle> Users
                 </Typography>
 
                 <FabButtons handleClickOpen={handleClickOpen} />
             </div>
-            <DataGrid getRowId={(r) => r._id} rows={users} columns={headers} style={{ borderWidth: '2px', borderRadius: '12px', marginTop: '10px', background: '#ffffff' }} />
-            <UserDialog open={open} handleClose={handleClose} />
+            <DataGrid checkboxSelection getRowId={(r) => r._id} rows={users} columns={headers} style={{ borderWidth: '2px', borderRadius: '12px', marginTop: '10px', background: '#ffffff' }} />
+            <UserDialog open={open} handleClose={handleClose} handleSubmitClose={handleSubmitClose} />
         </div>
     );
 }

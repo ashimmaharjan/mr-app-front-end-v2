@@ -3,7 +3,7 @@ import { Group, Inventory2, Masks, Science } from "@mui/icons-material";
 
 const DashboardCard = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
             {/* Users */}
             <div className="col-span-1 h-auto pb-2 bg-white shadow rounded-xl">
                 <div className="w-14 h-14 ml-4 -mt-4 bg-gray-900 rounded-xl flex justify-center items-center">
