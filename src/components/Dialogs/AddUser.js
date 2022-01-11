@@ -24,7 +24,7 @@ import { register, isAuthenticated } from "../API/api";
 import AlertMessage from "../Alerts/Alert";
 
 
-const UserDialog = ({ open, handleClose, handleSubmitClose }) => {
+const UserDialog = ({ open, handleClose, loadUsers }) => {
 
   const {
     user,
@@ -84,8 +84,9 @@ const UserDialog = ({ open, handleClose, handleSubmitClose }) => {
           error: "",
           success: true,
         });
-        handleSubmitClose();
+        handleClose();
         setSuccessStatus(true);
+        loadUsers();
       }
     });
     setSuccessStatus(false);

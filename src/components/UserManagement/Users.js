@@ -52,15 +52,10 @@ const Users = () => {
         },
     ];
 
-
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
-    };
-
-    const handleSubmitClose = () => {
-        setOpen(false);
     };
 
     const handleClose = () => {
@@ -81,7 +76,7 @@ const Users = () => {
                 <FabButtons handleClickOpen={handleClickOpen} />
             </div>
             <DataGrid checkboxSelection getRowId={(r) => r._id} rows={users} columns={headers} style={{ borderWidth: '2px', borderRadius: '12px', marginTop: '10px', background: '#ffffff' }} />
-            <UserDialog open={open} handleClose={handleClose} handleSubmitClose={handleSubmitClose} />
+            <UserDialog open={open} loadUsers={loadUsers} handleClose={handleClose} />
         </div>
     );
 }
