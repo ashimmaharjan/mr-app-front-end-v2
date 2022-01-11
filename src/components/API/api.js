@@ -326,7 +326,6 @@ export const listDoctors = (token) => {
 };
 
 
-
 //--------------> Chemist API <-------------------//
 export const addChemist = (token, data) => {
     return fetch(`${API}/admin/add-chemist`, {

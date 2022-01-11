@@ -49,6 +49,7 @@ body {
   border-top-left-radius: 20px;
   background-color: #f4f4f5;
   height: 87vh;
+  overflow-y: scroll;
 }
 
 .dialog-title {
@@ -60,4 +61,10 @@ body {
   padding: 8px 20px;
   background-color: #f50057;
 
+}
+
+.profile-floating-div {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
 }

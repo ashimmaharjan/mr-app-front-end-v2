@@ -213,11 +213,11 @@ const UserDialog = ({ open, handleClose, handleSubmitClose }) => {
   return (
     <>
       {
-        successStatus ? <AlertMessage message={"User Added Successfully"} /> : ''
+        successStatus ? <AlertMessage message={"User Added Successfully"} severity={"success"} /> : ''
       }
 
       {
-        error ? <AlertMessage message={error} /> : ''
+        error ? <AlertMessage message={error} severity={"error"} /> : ''
       }
 
       {/* {showError()} */}

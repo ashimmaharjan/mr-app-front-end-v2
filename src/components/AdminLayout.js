@@ -14,6 +14,7 @@ import TargetProduct from './TargetProduct/TargetProduct';
 import LeaveApplication from './LeaveApplication/LeaveApplication';
 import CRM from './CustomerRelationManagement/CRM';
 import BusinessDetails from './BusinessDetails/BusinessDetails';
+import Profile from "./Profile/Profile";
 
 import MyAppBar from "./AppBar";
 import NavigationDrawer from "./NavigationDrawer";
@@ -44,6 +45,7 @@ const AdminLayout = ({ history }) => {
                             <Route path="/leaveApplication" component={LeaveApplication}></Route>
                             <Route path="/crm" component={CRM}></Route>
                             <Route path="/businessDetails" component={BusinessDetails}></Route>
+                            <Route path="/profile" component={Profile}></Route>
                         </Switch>
                     </div>
                 </div>

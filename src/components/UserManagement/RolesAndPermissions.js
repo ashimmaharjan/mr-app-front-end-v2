@@ -25,9 +25,11 @@ const RolesAndPermissions = () => {
         { field: 'actions', headerName: 'Actions', width: 150 },
     ];
 
+    const [roles, setroles] = useState([]);
+
     return (
         <section>
-            <div style={{ height: '400px', width: '100%' }}>
+            <div style={{ height: '450px', width: '100%' }}>
                 <div className="flex justify-between items-center">
                     <Typography variant='h5' className='uppercase'>
                         <AdminPanelSettings fontSize='large' className='mb-1' /> Roles & Permissions
@@ -35,7 +37,7 @@ const RolesAndPermissions = () => {
 
                     <FabButtons handleClickOpen={handleClickOpen} />
                 </div>
-                <DataGrid columns={headers} style={{ borderWidth: '2px', borderRadius: '12px', marginTop: '10px', background: '#ffffff' }} />
+                <DataGrid columns={headers} rows={roles} style={{ borderWidth: '2px', borderRadius: '12px', marginTop: '10px', background: '#ffffff' }} />
                 <RolesDialog open={open} handleClose={handleClose} />
             </div>
         </section>

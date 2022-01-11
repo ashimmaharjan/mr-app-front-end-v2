@@ -19,7 +19,6 @@ const Users = () => {
                 console.log(data.error);
             } else {
                 setUsers(data);
-
             }
         });
     };

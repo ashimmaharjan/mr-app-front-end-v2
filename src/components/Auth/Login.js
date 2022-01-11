@@ -91,7 +91,7 @@ const Login = ({ history }) => {
     return (
         <div>
             {
-                error ? <AlertMessage message={error} /> : ''
+                error ? <AlertMessage message={error} severity={"warning"} /> : ''
             }
             {loginForm()}
             {redirectUser()}

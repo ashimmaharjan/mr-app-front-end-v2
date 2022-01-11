@@ -4,7 +4,7 @@ import { AppBar, Divider, IconButton, ListItemIcon, Menu, MenuItem } from "@mui/
 
 import { Link } from 'react-router-dom';
 import { signOut } from "./API/api";
-const TopNavBar = ({history}) => {
+const TopNavBar = ({ history }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -72,12 +72,14 @@ const TopNavBar = ({history}) => {
                                 }}
                                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
-                                <MenuItem>
-                                    <ListItemIcon>
-                                        <AccountCircle></AccountCircle>
-                                    </ListItemIcon>
-                                    Profile
-                                </MenuItem>
+                                <Link to="/profile">
+                                    <MenuItem>
+                                        <ListItemIcon>
+                                            <AccountCircle></AccountCircle>
+                                        </ListItemIcon>
+                                        Profile
+                                    </MenuItem>
+                                </Link>
                                 <MenuItem>
                                     <ListItemIcon>
                                         <Lock></Lock>
@@ -88,7 +90,7 @@ const TopNavBar = ({history}) => {
                                 <MenuItem onClick={() => {
                                     signOut(() => {
                                         history.push("/");
-                                        })
+                                    })
                                 }}>
                                     <ListItemIcon>
                                         <Logout></Logout>
