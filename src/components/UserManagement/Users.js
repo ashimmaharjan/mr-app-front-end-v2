@@ -1,10 +1,10 @@
 
 import { DataGrid } from '@mui/x-data-grid';
-import { Typography } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 
 import FabButtons from '../FabButtons/FabButtons';
-import { SupervisedUserCircle } from '@mui/icons-material';
+import { Delete, Edit, RemoveRedEye, SupervisedUserCircle } from '@mui/icons-material';
 import UserDialog from '../Dialogs/AddUser';
 import { allUsers } from '../API/api';
 
@@ -28,9 +28,28 @@ const Users = () => {
         { field: 'username', headerName: 'Username', width: 150 },
         { field: 'email', headerName: 'Email', width: 180 },
         { field: 'phone', headerName: 'Phone', width: 150 },
-        { field: 'status', headerName: 'Status', width: 150 },
+        { field: 'status', headerName: 'Status', width: 100 },
         { field: 'createdAt', headerName: 'Created At', width: 150 },
-        { field: 'actions', headerName: 'Actions', width: 150 },
+        {
+            field: 'actions', headerName: 'Actions', width: 150,
+            renderCell: (params) => {
+                return (
+                    <>
+                        <div className='flex justify-center w-full'>
+                            <IconButton size='small'>
+                                <RemoveRedEye fontSize='inherit' className='text-blue-600'></RemoveRedEye>
+                            </IconButton>
+                            <IconButton size='small'>
+                                <Edit fontSize='inherit' className='text-green-600'></Edit>
+                            </IconButton>
+                            <IconButton size='small'>
+                                <Delete fontSize='inherit' className='text-red-600'></Delete>
+                            </IconButton>
+                        </div>
+                    </>
+                );
+            }
+        },
     ];
 
 

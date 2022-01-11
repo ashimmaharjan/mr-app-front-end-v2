@@ -44,22 +44,8 @@ const NavigationDrawer = () => {
                     </ListItemButton>
                     <Collapse in={UMDrawer} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding sx={{ pl: 2 }}>
-                            <Link to="/users">
-                                <ListItemButton>
-                                    <ListItemIcon >
-                                        <SupervisedUserCircle />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Users" />
-                                </ListItemButton>
-                            </Link>
-                            <Link to="/rolesAndPermissions">
-                                <ListItemButton>
-                                    <ListItemIcon >
-                                        <AdminPanelSettings />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Roles & Permissions" />
-                                </ListItemButton>
-                            </Link>
+                            <NavList title={'Users'} icon={<SupervisedUserCircle />} link={'/users'}> </NavList>
+                            <NavList title={'Roles & Permissions'} icon={<AdminPanelSettings />} link={'/rolesAndPermissions'}> </NavList>
                         </List>
                     </Collapse>
 

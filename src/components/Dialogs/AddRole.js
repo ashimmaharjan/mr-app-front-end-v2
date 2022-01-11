@@ -1,7 +1,7 @@
-import { Button, Dialog, DialogActions, Divider, IconButton, FormControl, Select, MenuItem, InputLabel } from '@mui/material';
+import { Button, Dialog, DialogActions, Divider, IconButton } from '@mui/material';
 import InputField from '../InputFields/InputField';
 import SwitchButton from '../InputFields/SwitchButton';
-import { Close, Email, Home, Lock, Phone, Save, AccountCircleOutlined, AdminPanelSettings } from '@mui/icons-material';
+import { Close, Save, AdminPanelSettings } from '@mui/icons-material';
 
 const RolesDialog = ({ open, handleClose }) => {
 

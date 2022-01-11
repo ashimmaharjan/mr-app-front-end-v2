@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { AccountCircle, Lock, Logout, Message, Notifications, Search, LocalHospital } from "@mui/icons-material";
 import { AppBar, Divider, IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material";
+import { useHistory } from "react-router-dom";
 
 import { Link } from 'react-router-dom';
 import { signOut } from "./API/api";
-const TopNavBar = ({ history }) => {
+const TopNavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -13,6 +14,8 @@ const TopNavBar = ({ history }) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    let history = useHistory();
     return (
         <div>
             <AppBar position="sticky" className="p-4" style={{ background: '#f50057' }} elevation={0}>

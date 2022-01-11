@@ -8,8 +8,6 @@ import {
   Select,
   MenuItem,
   InputLabel,
-  Snackbar,
-  Alert,
 } from "@mui/material";
 import { useState } from "react";
 import InputField from "../InputFields/InputField";
@@ -126,6 +124,7 @@ const UserDialog = ({ open, handleClose, handleSubmitClose }) => {
               label={"Phone"}
               type={"text"}
               name={'phone'}
+              required={'required'}
               value={values.phone}
               onChange={handleChange}
               icon={<Phone></Phone>}
