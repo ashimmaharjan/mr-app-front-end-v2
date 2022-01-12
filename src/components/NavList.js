@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ListItemIcon, ListItemButton, ListItemText, makeStyles, ListItem } from '@mui/material';
 import { useLocation } from "react-router-dom";
+import { style } from '@mui/system';
 
 const NavList = ({ title, icon, link }) => {
     const location = useLocation();

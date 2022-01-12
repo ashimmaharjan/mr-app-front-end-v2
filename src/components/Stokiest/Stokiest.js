@@ -59,7 +59,7 @@ const Stokiest = () => {
             </div>
 
             <DataGrid getRowId={(r) => r._id} rows={stockiest} columns={headers} style={{ borderWidth: '2px', borderRadius: '12px', marginTop: '10px', background: '#ffffff' }} />
-            <StokiestDialog open={open} handleClose={handleClose}></StokiestDialog>
+            <StokiestDialog open={open} handleClose={handleClose} loadStockiest={loadStockiest}></StokiestDialog>
         </div>
     );
 }

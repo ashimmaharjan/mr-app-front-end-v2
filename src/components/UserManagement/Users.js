@@ -7,6 +7,7 @@ import FabButtons from '../FabButtons/FabButtons';
 import { Delete, Edit, RemoveRedEye, SupervisedUserCircle } from '@mui/icons-material';
 import UserDialog from '../Dialogs/AddUser';
 import { allUsers } from '../API/api';
+import ConfirmDelete from '../Dialogs/ConfirmDelete';
 
 const Users = () => {
 
@@ -42,7 +43,7 @@ const Users = () => {
                             <IconButton size='small'>
                                 <Edit fontSize='inherit' className='text-green-600'></Edit>
                             </IconButton>
-                            <IconButton size='small'>
+                            <IconButton size='small' onClick={() => openDeleteDialog()}>
                                 <Delete fontSize='inherit' className='text-red-600'></Delete>
                             </IconButton>
                         </div>
@@ -66,6 +67,17 @@ const Users = () => {
         loadUsers();
     }, [])
 
+    const [deleteDialog, setdeleteDialog] = useState(false);
+
+    const openDeleteDialog = () => {
+        setdeleteDialog(true);
+    };
+
+    const closeDeleteDialog = () => {
+        setdeleteDialog(false);
+    };
+
+
     return (
         <div style={{ height: '90%', width: '100%' }}>
             <div className="flex justify-between items-center">
@@ -77,6 +89,7 @@ const Users = () => {
             </div>
             <DataGrid checkboxSelection getRowId={(r) => r._id} rows={users} columns={headers} style={{ borderWidth: '2px', borderRadius: '12px', marginTop: '10px', background: '#ffffff' }} />
             <UserDialog open={open} loadUsers={loadUsers} handleClose={handleClose} />
+            <ConfirmDelete open={deleteDialog} closeDeleteDialog={closeDeleteDialog}></ConfirmDelete>
         </div>
     );
 }

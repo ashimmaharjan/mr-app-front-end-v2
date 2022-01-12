@@ -4,8 +4,9 @@ import { useState } from 'react';
 import InputField from "../InputFields/InputField";
 import SwitchButton from '../InputFields/SwitchButton';
 import { isAuthenticated, addStockiest } from "../API/api";
+import AlertMessage from "../Alerts/Alert";
 
-const StokiestDialog = ({ open, handleClose }) => {
+const StokiestDialog = ({ open, handleClose, loadStockiest }) => {
 
     const {
         user,
@@ -38,6 +39,8 @@ const StokiestDialog = ({ open, handleClose }) => {
         });
     }
 
+    const [successStatus, setSuccessStatus] = useState(false);
+
     const clickSubmit = (event) => {
         event.preventDefault();
         setValues({ ...values, error: false });
@@ -61,12 +64,15 @@ const StokiestDialog = ({ open, handleClose }) => {
                     error: "",
                     success: true,
                 });
+                handleClose();
+                setSuccessStatus(true);
+                loadStockiest();
             }
         });
     };
     const AddStockiestForm = () => {
         return (
-            <Dialog open={open} onClose={() => handleClose()} fullWidth maxWidth='lg' disableEscapeKeyDown="true" onBackdropClick="false">
+            <Dialog open={open} onClose={() => handleClose()} fullWidth maxWidth='md' disableEscapeKeyDown="true" onBackdropClick="false">
                 <div className='dialog-title'>
                     <h1 className='text-xl'>Add Stokiest</h1>
                     <IconButton onClick={() => handleClose()}>
@@ -96,29 +102,16 @@ const StokiestDialog = ({ open, handleClose }) => {
             </Dialog>
         );
     };
-    const showError = () => (
-        <div
-            className="flex alert alert-danger justify-center items-center bg-red-500 text-white py-1"
-            style={{ display: error ? "" : "none" }}
-        >
-            {error}
-        </div>
-    );
-
-    const showSuccess = () => (
-        <div
-            className="flex alert alert-info justify-center items-center bg-green-500 text-white py-1"
-            style={{ display: success ? "" : "none" }}
-        >
-            Stockiest Added
-        </div>
-    );
-
-
     return (
         <>
-            {showError()}
-            {showSuccess()}
+            {
+                successStatus ? <AlertMessage message={"Stokiest Added Successfully"} severity={"success"} /> : ''
+            }
+
+            {
+                error ? <AlertMessage message={error} severity={"error"} /> : ''
+            }
+
             {AddStockiestForm()}
         </>
     );
