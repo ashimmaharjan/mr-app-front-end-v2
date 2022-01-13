@@ -23,12 +23,8 @@ import {
 import { register, isAuthenticated } from "../API/api";
 import AlertMessage from "../Alerts/Alert";
 
-
 const UserDialog = ({ open, handleClose, loadUsers }) => {
-
-  const {
-    user,
-  } = isAuthenticated();
+  const { user } = isAuthenticated();
 
   const [values, setValues] = useState({
     username: "",
@@ -44,20 +40,13 @@ const UserDialog = ({ open, handleClose, loadUsers }) => {
     const value =
       evt.target.type === "checkbox" ? evt.target.checked : evt.target.value;
     setValues({
-      ...values, error: false,
-      [evt.target.name]: value
+      ...values,
+      error: false,
+      [evt.target.name]: value,
     });
   }
 
-  const {
-    username,
-    password,
-    email,
-    phone,
-    userType,
-    error,
-    success,
-  } = values;
+  const { username, password, email, phone, userType, error, success } = values;
 
   const [successStatus, setSuccessStatus] = useState(false);
 
@@ -115,7 +104,7 @@ const UserDialog = ({ open, handleClose, loadUsers }) => {
               required={true}
               label={"Email"}
               type={"email"}
-              name={'email'}
+              name={"email"}
               value={values.email}
               onChange={handleChange}
               icon={<Email></Email>}
@@ -124,8 +113,8 @@ const UserDialog = ({ open, handleClose, loadUsers }) => {
             <InputField
               label={"Phone"}
               type={"text"}
-              name={'phone'}
-              required={'required'}
+              name={"phone"}
+              required={"required"}
               value={values.phone}
               onChange={handleChange}
               icon={<Phone></Phone>}
@@ -181,8 +170,6 @@ const UserDialog = ({ open, handleClose, loadUsers }) => {
             </Button>
           </DialogActions>
         </form>
-
-
       </Dialog>
     );
   };
@@ -212,13 +199,24 @@ const UserDialog = ({ open, handleClose, loadUsers }) => {
 
   return (
     <>
-      {
-        successStatus ? <AlertMessage message={"User Added Successfully"} severity={"success"} /> : ''
-      }
+      {successStatus ? (
+        <AlertMessage
+          message={"User Added Successfully"}
+          severity={"success"}
+        />
+      ) : (
+        ""
+      )}
 
-      {
-        error ? <AlertMessage message={error} severity={"error"} /> : ''
-      }
+      {error ? (
+        <AlertMessage
+          message={error}
+          severity={"error"}
+          style={{ background: "#f44336", color: "#ffffff" }}
+        />
+      ) : (
+        ""
+      )}
 
       {/* {showError()} */}
       {/* {showSuccess()} */}
