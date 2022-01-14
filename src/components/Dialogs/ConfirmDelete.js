@@ -17,9 +17,7 @@ const ConfirmDelete = ({ open, closeDeleteDialog }) => {
         maxWidth="xs"
       >
         <DialogTitle>Confirm Delete</DialogTitle>
-        <DialogContent dividers>
-          Are you sure you want to delete it?
-        </DialogContent>
+        <DialogContent dividers></DialogContent>
         <DialogActions>
           <Button variant="text" onClick={() => closeDeleteDialog()}>
             Cancel
